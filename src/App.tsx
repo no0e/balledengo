@@ -1,34 +1,38 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { AuthProvider } from './contexts/AuthContext';
-
-import Header from './components/Header';
-import Footer from './components/Footer';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import ListField from './pages/ListField';
-import HowItWorks from './pages/HowItWorks';
-import FieldDetail from './pages/FieldDetail';
+import Search from './pages/Search';
+import CreateListing from './pages/CreateListing';
+import Profile from './pages/Profile';
+import ListingDetails from './pages/ListingDetails';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import About from './pages/About';
+import Legal from './pages/Legal';
+import Support from './pages/Support';
+import Social from './pages/Social';
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
-        <div className="min-h-screen bg-white flex flex-col">
-          <Header />
-          <main className="flex-grow pt-16">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/find-field" element={<Navigate to="/" replace />} />
-              <Route path="/list-field" element={<ListField />} />
-              <Route path="/how-it-works" element={<HowItWorks />} />
-              <Route path="/field/:id" element={<FieldDetail />} />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
-      </Router>
-    </AuthProvider>
+    <Router>
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/search" element={<Search />} />
+            <Route path="/create-listing" element={<CreateListing />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/listing/:id" element={<ListingDetails />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/legal" element={<Legal />} />
+            <Route path="/support" element={<Support />} />
+            <Route path="/social" element={<Social />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
-export default App;
+export default App; 

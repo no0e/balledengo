@@ -12,13 +12,22 @@ const SupabaseTest = () => {
   useEffect(() => {
     const testConnection = async () => {
       try {
+        console.log('Tentative de connexion à Supabase...');
+        console.log('URL:', import.meta.env.VITE_SUPABASE_URL);
+        console.log('Clé présente:', !!import.meta.env.VITE_SUPABASE_ANON_KEY);
+        
         // Test simple de la connexion
         const { data, error } = await supabase.auth.getSession();
         
-        if (error) throw error;
+        if (error) {
+          console.error('Erreur Supabase:', error);
+          throw error;
+        }
         
+        console.log('Connexion réussie!');
         setStatus('success');
       } catch (err) {
+        console.error('Erreur détaillée:', err);
         setStatus('error');
         setError(err instanceof Error ? err.message : 'Une erreur est survenue');
       }
@@ -51,8 +60,7 @@ const SupabaseTest = () => {
       
       {status === 'error' && (
         <div className="text-red-600">
-          <p>❌ Erreur de connexion :</p>
-          <p className="text-sm mt-2">{error}</p>
+          <p>❌ Erreur de connexion : {error}</p>
         </div>
       )}
     </div>

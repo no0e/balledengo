@@ -1,54 +1,75 @@
 # Guide d'importation des données de test dans Supabase
 
-Ce guide vous explique comment importer les données de test dans votre base de données Supabase pour que votre application affiche correctement les terrains et les annonces.
+Ce guide explique comment importer les données de test dans votre base de données Supabase pour SportSpot.
 
-## Étapes à suivre
+## Structure de la base de données
 
-### 1. Accéder à l'éditeur SQL de Supabase
+La base de données comprend les tables suivantes :
+- `users` : Utilisateurs (joueurs, propriétaires, administrateurs)
+- `sports` : Types de sports disponibles
+- `locations` : Établissements sportifs
+- `sport_zones` : Zones sportives dans les établissements
+- `zone_sport_configurations` : Configuration des sports possibles sur chaque zone
+- `courts` : Terrains spécifiques
+- `bookings` : Réservations
+- `payments` : Paiements
+- `reviews` : Avis des utilisateurs
+- Et d'autres tables pour la gestion des messages, notifications, etc.
 
-1. Connectez-vous à votre compte Supabase : https://app.supabase.com/
-2. Sélectionnez votre projet
-3. Dans le menu de gauche, cliquez sur "SQL Editor"
-4. Cliquez sur "New Query" pour créer une nouvelle requête
+## Importation des données
 
-### 2. Importer le script SQL
+1. Connectez-vous à votre projet Supabase
+2. Allez dans la section "SQL Editor"
+3. Copiez le contenu du fichier `supabase_test_data.sql`
+4. Collez-le dans l'éditeur SQL
+5. Exécutez le script
 
-1. Copiez le contenu du fichier `supabase_test_data.sql` que nous avons créé
-2. Collez-le dans l'éditeur SQL de Supabase
-3. Cliquez sur "Run" pour exécuter le script
+## Vérification de l'importation
 
-### 3. Vérifier l'importation des données
+Après l'importation, vous devriez avoir :
+- 5 utilisateurs (1 admin, 2 propriétaires, 2 joueurs)
+- 5 sports différents
+- 4 établissements sportifs
+- 7 zones sportives
+- 7 courts
+- Des réservations et avis de test
 
-1. Dans le menu de gauche, cliquez sur "Table Editor"
-2. Vérifiez que les tables suivantes contiennent des données :
-   - `sports` : devrait contenir 5 sports différents
-   - `locations` : devrait contenir 10 lieux différents
-   - `sport_zones` : devrait contenir 17 zones de sport
-   - `zone_sport_configurations` : devrait contenir 17 configurations
+## Données de test
 
-### 4. Rafraîchir votre application
+### Utilisateurs
+- Admin : admin@sportspot.fr
+- Propriétaires : owner1@sportspot.fr, owner2@sportspot.fr
+- Joueurs : player1@sportspot.fr, player2@sportspot.fr
 
-1. Retournez à votre application
-2. Rafraîchissez la page
-3. Vous devriez maintenant voir les terrains et les annonces s'afficher
+### Sports
+- Football
+- Basketball
+- Tennis
+- Volleyball
+- Padel
 
-## Structure des données
+### Établissements
+1. Terrain de football municipal (Paris)
+2. Complexe sportif du centre (Lyon)
+3. Tennis Club de la ville (Marseille)
+4. Terrain de padel privé (Bordeaux)
 
-Le script SQL ajoute les données suivantes :
+## Dépannage
 
-- **Sports** : Football, Basketball, Tennis, Volleyball, Padel
-- **Lieux** : 10 terrains différents dans différentes villes de France
-- **Zones de sport** : Différents types de terrains (football, basketball, tennis, etc.)
-- **Configurations** : Prix par heure pour chaque zone de sport
+Si vous rencontrez des erreurs lors de l'importation :
 
-## Résolution des problèmes
+1. Vérifiez que toutes les tables sont créées avec la bonne structure
+2. Assurez-vous que les contraintes d'énumération sont correctement définies
+3. Vérifiez les contraintes de clés étrangères
+4. En cas d'erreur spécifique, consultez les logs Supabase
 
-Si vous rencontrez des erreurs lors de l'exécution du script SQL, vérifiez les points suivants :
+## Rafraîchissement de l'application
 
-1. **Structure des tables** : Assurez-vous que les tables ont la même structure que celle attendue par le script
-2. **Clés primaires** : Vérifiez que les clés primaires correspondent à celles définies dans le script
-3. **Contraintes** : Assurez-vous qu'il n'y a pas de contraintes qui empêchent l'insertion des données
+Après l'importation des données :
 
-## Personnalisation des données
+1. Rafraîchissez votre application
+2. Connectez-vous avec l'un des comptes de test
+3. Vérifiez que les établissements et les terrains apparaissent correctement
+4. Testez une réservation pour vous assurer que tout fonctionne
 
-Vous pouvez modifier le script SQL pour ajouter vos propres données ou modifier les données existantes. Assurez-vous de respecter la structure des tables et les contraintes définies dans votre base de données. 
+Pour toute question ou problème, consultez la documentation ou contactez l'équipe de développement. 

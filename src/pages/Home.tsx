@@ -7,7 +7,7 @@ const Home = () => {
       <section className="bg-green-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Trouvez le terrain sportif parfait
+            Balle dengo - Trouvez le terrain sportif parfait
           </h1>
           <p className="text-xl mb-8">
             Louez des terrains sportifs entre particuliers facilement et rapidement

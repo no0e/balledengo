@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import SupabaseTest from '../components/SupabaseTest';
 
 const Home = () => {
   return (
@@ -18,6 +19,13 @@ const Home = () => {
           >
             Commencer la recherche
           </Link>
+        </div>
+      </section>
+
+      {/* Test de connexion Supabase */}
+      <section className="py-8">
+        <div className="max-w-7xl mx-auto px-4">
+          <SupabaseTest />
         </div>
       </section>
 
